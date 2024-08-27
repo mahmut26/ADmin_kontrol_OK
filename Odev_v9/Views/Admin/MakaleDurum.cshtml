@@ -1,0 +1,31 @@
+﻿@using DataLayer.Model_VM
+@model List<DurumDeg>
+
+<h2>Kullanıcıların Durumları</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Başlık</th>
+            <th>Onay</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Degistir</td>
+                
+                <td>
+                    <form method="get" asp-action="UpdateMakaleStatus" asp-controller="Admin">
+                        <input type="hidden" name="userName" value="@item.Name" />
+                        
+                        <button type="submit">Değiştir</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
